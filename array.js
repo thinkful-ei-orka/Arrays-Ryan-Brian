@@ -73,3 +73,5 @@ class Array {
   }
 }
 Array.SIZE_RATIO = 3;
+
+module.exports = Array;
