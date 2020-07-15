@@ -117,6 +117,30 @@ function productsExceptSelf(array) {
 
 // productsExceptSelf([1, 3, 9, 4]);
 
+function mutateLines(array) {
+  let result = JSON.parse(JSON.stringify(array));
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < array[i].length; j++) {
+      result[i][j] =
+        [...array[i], ...array.map((row) => row[j])].reduce((a, b) => a + b) <
+        array.length + array[i].length
+          ? 0
+          : 1;
+    }
+  }
+  return result;
+}
+
+console.log(
+  mutateLines([
+    [1, 0, 1, 1, 0],
+    [0, 1, 1, 1, 0],
+    [1, 1, 1, 1, 1],
+    [1, 0, 1, 1, 1],
+    [1, 1, 1, 1, 1],
+  ])
+);
+
 function checkRotation(string, rotatedString) {
   console.log(
     string.length === rotatedString.length &&
@@ -124,5 +148,5 @@ function checkRotation(string, rotatedString) {
   );
 }
 
-checkRotation("amazon", "azonma");
-checkRotation("amazon", "azonam");
+// checkRotation("amazon", "azonma");
+// checkRotation("amazon", "azonam");
